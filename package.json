@@ -1,0 +1,30 @@
+{
+  "name": "doubtsolve-ai",
+  "version": "2.0.0",
+  "description": "DoubtSolve.ai — Gemini → Lesson JSON → Remotion 2D + Three.js 3D → ElevenLabs → FFmpeg",
+  "scripts": {
+    "dev": "py -3 server.py",
+    "start": "py -3 server.py",
+    "ui:dev": "npm run dev --prefix frontend",
+    "ui:build": "npm run build --prefix frontend && powershell -NoProfile -Command \"if (Test-Path web) { Remove-Item -Recurse -Force web }; Copy-Item -Recurse frontend\\out web\"",
+    "engine:install": "npm install --prefix remotion",
+    "engine:studio": "npm run studio --prefix remotion",
+    "generate": "py -3 main.py",
+    "generate:sample": "py -3 main.py --input \"An object is thrown at an angle. Explain projectile motion and calculate its range.\" --visual-mode HYBRID --quality FAST_PREVIEW --debug",
+    "test": "py -3 main.py --debug"
+  },
+  "keywords": [
+    "ai",
+    "remotion",
+    "threejs",
+    "animation",
+    "education",
+    "gemini",
+    "elevenlabs",
+    "ffmpeg",
+    "2d",
+    "3d"
+  ],
+  "author": "DoubtSolve.ai",
+  "license": "MIT"
+}

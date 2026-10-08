@@ -1,0 +1,33 @@
+{
+  "name": "doubtsolve-remotion-engine",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DoubtSolve.ai Remotion 2D + Three.js 3D educational video engine",
+  "scripts": {
+    "studio": "remotion studio --port 3333",
+    "render": "remotion render",
+    "render:scene": "remotion render SceneClip",
+    "render:lesson": "remotion render LessonVideo",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@react-three/drei": "9.117.3",
+    "@react-three/fiber": "8.17.10",
+    "@remotion/cli": "4.0.286",
+    "@remotion/media-utils": "4.0.286",
+    "@remotion/three": "4.0.286",
+    "@xyflow/react": "^12.12.0",
+    "dagre": "^0.8.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.286",
+    "smiles-drawer": "^2.0.1",
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "@types/dagre": "^0.7.54",
+    "@types/react": "18.3.12",
+    "@types/three": "0.170.0",
+    "typescript": "5.6.3"
+  }
+}

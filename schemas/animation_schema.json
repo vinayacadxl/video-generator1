@@ -1,0 +1,178 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EducationalAnimationPlan",
+  "type": "object",
+  "required": ["video", "scenes"],
+  "properties": {
+    "video": {
+      "type": "object",
+      "required": ["title", "subject", "visualMode"],
+      "properties": {
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "topic": { "type": "string" },
+        "subtopic": { "type": "string" },
+        "visualMode": { "type": "string", "enum": ["2D", "3D", "HYBRID"] },
+        "durationTarget": { "type": "number", "minimum": 5 },
+        "targetDuration": { "type": "number", "minimum": 5 },
+        "aspectRatio": { "type": "string", "default": "16:9" },
+        "language": { "type": "string", "default": "English" },
+        "quality": { "type": "string" }
+      }
+    },
+    "solution": {
+      "type": "object",
+      "properties": {
+        "concept": { "type": "string" },
+        "given": { "type": "array", "items": { "type": "string" } },
+        "find": { "type": "string" },
+        "formula": { "type": "string" },
+        "steps": { "type": "array", "items": { "type": "string" } },
+        "answer": { "type": "string" }
+      }
+    },
+    "narration": {
+      "type": "object",
+      "required": ["sections"],
+      "properties": {
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["sceneId", "text"],
+            "properties": {
+              "sceneId": { "type": "string" },
+              "text": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "scenes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "visualMode", "duration", "narration"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["INTRO", "HOOK", "EXPLANATION", "MOTION", "CALCULATION", "DIAGRAM", "CONCLUSION", "RECAP"]
+          },
+          "visualMode": {
+            "type": "string",
+            "enum": ["2D", "3D"]
+          },
+          "duration": { "type": "number", "minimum": 1 },
+          "narration": { "type": "string" },
+          "learningGoal": { "type": "string" },
+          "visuals": { "type": "array", "items": { "type": "string" } },
+          "animations": { "type": "array", "items": { "type": "string" } },
+          "onScreen": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "subtitle": { "type": "string" },
+              "given": { "type": "array", "items": { "type": "string" } },
+              "find": { "type": "string" },
+              "bullets": { "type": "array", "items": { "type": "string" } },
+              "equations": { "type": "array", "items": { "type": "string" } },
+              "equationBeats": { "type": "array" },
+              "answer": { "type": ["string", "null"] }
+            }
+          },
+          "visualBeats": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "at": { "type": "number" },
+                "see": { "type": "string" },
+                "say": { "type": "string" }
+              }
+            }
+          },
+          "camera": {
+            "type": "object",
+            "properties": {
+              "preset": {
+                "type": "string",
+                "enum": [
+                  "STATIC", "FOLLOW_OBJECT", "FOCUS_OBJECT", "ZOOM_IN", "ZOOM_OUT",
+                  "PAN", "ORBIT", "TOP_VIEW", "SIDE_VIEW", "ISOMETRIC", "CLOSE_UP", "WIDE_SHOT"
+                ],
+                "default": "ISOMETRIC"
+              },
+              "target": { "type": "string" },
+              "position": { "type": "array", "items": { "type": "number" } }
+            }
+          },
+          "objects": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "type"],
+              "properties": {
+                "id": { "type": "string" },
+                "type": { "type": "string" },
+                "position": { "type": "array", "items": { "type": "number" } },
+                "rotation": { "type": "array", "items": { "type": "number" } },
+                "scale": { "type": "array", "items": { "type": "number" } },
+                "color": { "type": "string" },
+                "label": { "type": "string" },
+                "equation": { "type": "string" },
+                "parameters": { "type": "object" }
+              }
+            }
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["action"],
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "enum": [
+                    "CREATE", "DELETE", "MOVE", "ROTATE", "SCALE",
+                    "FADE_IN", "FADE_OUT", "HIGHLIGHT", "GLOW", "DRAW",
+                    "TRANSFORM", "ZOOM", "CAMERA_MOVE", "CAMERA_FOCUS",
+                    "SHOW_LABEL", "SHOW_EQUATION", "SHOW_ARROW", "SHOW_VECTOR",
+                    "SHOW_DISTANCE", "ANIMATE_PROPERTY", "GRAPH", "PARTICLE_EFFECT",
+                    "SIMULATE"
+                  ]
+                },
+                "object": { "type": "string" },
+                "target": { "type": "string" },
+                "target1": { "type": "string" },
+                "target2": { "type": "string" },
+                "type": { "type": "string" },
+                "position": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3 },
+                "color": { "type": "string" },
+                "start": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3 },
+                "end": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3 },
+                "preset": { "type": "string" },
+                "property": { "type": "string" },
+                "startValue": { "type": "number" },
+                "endValue": { "type": "number" },
+                "delay": { "type": "number", "minimum": 0 },
+                "loop": { "type": "boolean" },
+                "direction": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3 },
+                "length": { "type": "number", "exclusiveMinimum": 0 },
+                "from": { "type": "array", "items": { "type": "number" } },
+                "to": { "type": "array", "items": { "type": "number" } },
+                "startTime": { "type": "number" },
+                "duration": { "type": "number" },
+                "vector": { "type": "string" },
+                "equation": { "type": "string" },
+                "label": { "type": "string" },
+                "parameters": { "type": "object" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

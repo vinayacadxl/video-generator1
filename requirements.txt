@@ -1,0 +1,14 @@
+python-dotenv
+Pillow
+imageio-ffmpeg
+google-generativeai
+requests
+pymupdf
+jsonschema
+fastapi
+uvicorn
+python-multipart
+edge-tts
+matplotlib
+pydantic>=2.0
+# Optional: pip install rdkit — enables strict SMILES validation when available

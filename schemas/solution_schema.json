@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TeachingSolutionPack",
+  "type": "object",
+  "required": ["concept", "given", "find", "steps", "answer", "equationBeats", "intuition", "simulation"],
+  "properties": {
+    "concept": { "type": "string" },
+    "teachingGoal": { "type": "string" },
+    "given": { "type": "array", "items": { "type": "string" } },
+    "find": { "type": "string" },
+    "intuition": { "type": "string" },
+    "visualConcept": { "type": "object" },
+    "simulation": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "params": { "type": "object" },
+        "describe": { "type": "string" }
+      }
+    },
+    "formula": { "type": "string" },
+    "equationBeats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "latex": { "type": "string" },
+          "say": { "type": "string" }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "explanation": { "type": "string" },
+          "formula": { "type": "string" },
+          "calculation": { "type": "string" },
+          "visualCue": { "type": "string" },
+          "say": { "type": "string" }
+        }
+      }
+    },
+    "answer": { "type": "string" },
+    "answerPlain": { "type": "string" },
+    "keyTakeaway": { "type": "string" },
+    "commonMistake": { "type": "string" },
+    "explanation": { "type": "string" }
+  }
+}
